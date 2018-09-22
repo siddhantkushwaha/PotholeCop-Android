@@ -45,8 +45,7 @@
 
         <activity
             android:name=".AddPothole"
-            android:label="@string/title_activity_add_pothole"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label="@string/title_activity_add_pothole"></activity>
     </application>
 
 </manifest>
