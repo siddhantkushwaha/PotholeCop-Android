@@ -3,9 +3,15 @@ package com.potholecop.androidapp;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import com.potholecop.androidapp.fragments.FeedFragment;
+import com.potholecop.androidapp.fragments.LocalFragment;
+import com.potholecop.androidapp.fragments.ProfileFragment;
 
 public class LoggedInActivity extends AppCompatActivity {
 
@@ -18,13 +24,16 @@ public class LoggedInActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                    FeedFragment feedFragment = FeedFragment.newInstance();
+                    openFragment(feedFragment);
                     return true;
                 case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                    LocalFragment localFragment = LocalFragment.newInstance();
+                    openFragment(localFragment);
                     return true;
                 case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+                    ProfileFragment profileFragment = ProfileFragment.newInstance();
+                    openFragment(profileFragment);
                     return true;
             }
             return false;
@@ -41,4 +50,11 @@ public class LoggedInActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
+    private void openFragment(Fragment fragment) {
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 }
