@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.potholecop.androidapp.fragments.FeedFragment;
 import com.potholecop.androidapp.fragments.LocalFragment;
 import com.potholecop.androidapp.fragments.ProfileFragment;
@@ -69,10 +70,17 @@ public class LoggedInActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        Intent intent;
         switch (item.getItemId()) {
             case R.id.action_report_pothole:
-                Intent intent = new Intent(LoggedInActivity.this, AddPothole.class);
+                intent = new Intent(LoggedInActivity.this, AddPothole.class);
                 startActivity(intent);
+                break;
+            case R.id.action_logout:
+                FirebaseAuth.getInstance().signOut();
+                intent = new Intent(LoggedInActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
                 break;
         }
         return true;

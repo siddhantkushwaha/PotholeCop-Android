@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.potholecop.androidapp"
-        minSdkVersion 22
+        minSdkVersion 23
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -54,6 +54,8 @@ dependencies {
     implementation 'moe.feng:MaterialStepperView:+'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.github.ceryle:RadioRealButton:v2.1.1'
+
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.3.+'
 
     implementation project(':ucrop')
 

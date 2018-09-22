@@ -46,6 +46,11 @@
         <activity
             android:name=".AddPothole"
             android:label="@string/title_activity_add_pothole"></activity>
+            android:label="@string/title_activity_add_pothole"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"/>
+
     </application>
 
 </manifest>

@@ -41,7 +41,7 @@
                     android:id="@+id/upload"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/material_red_500"
+                    android:backgroundTint="@color/material_blue_500"
                     android:text="Upload Image"
                     android:textColor="@android:color/white" />
                 <LinearLayout

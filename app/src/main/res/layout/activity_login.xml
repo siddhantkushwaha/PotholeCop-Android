@@ -13,25 +13,25 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="200sp"
-        android:layout_alignParentTop="true"
+        android:layout_width="144dp"
+        android:layout_height="144dp"
+        android:layout_above="@+id/loginInputs"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40sp"
         custom:srcCompat="@drawable/logo" />
 
     <LinearLayout
         android:id="@+id/loginInputs"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_above="@id/verifyLinearLayout"
         android:layout_alignParentEnd="false"
-        android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="5sp"
         android:layout_marginRight="5sp"
-        android:layout_marginTop="50sp"
-        android:orientation="vertical">
+        android:layout_marginTop="24sp"
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <LinearLayout
             android:id="@+id/ccpLinearLayout"
@@ -87,12 +87,11 @@
 
     <LinearLayout
         android:id="@+id/verifyLinearLayout"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="false"
-        android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="false"
+        android:layout_centerVertical="true"
         android:layout_marginTop="40sp"
         android:orientation="vertical"
         android:visibility="gone">
@@ -145,37 +144,37 @@
                 android:textColor="@android:color/white" />
 
         </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_alignBottom="@+id/toggleButton2"
-                android:layout_alignParentStart="true"
-                android:layout_marginBottom="40dp"
-                android:indeterminate="true"
-                android:visibility="visible" />
-
-            <Button
-                android:id="@+id/toggleButton2"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="false"
-                android:background="@color/colorGrey"
-                android:text="Entered a Wrong Number?"
-                android:textAllCaps="false"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </RelativeLayout>
-
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_alignBottom="@+id/toggleButton2"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="40dp"
+            android:indeterminate="true"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/toggleButton2"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="false"
+            android:background="@color/colorGrey"
+            android:text="Entered a Wrong Number?"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:visibility="gone" />
+    </RelativeLayout>
 
 
 </RelativeLayout>
