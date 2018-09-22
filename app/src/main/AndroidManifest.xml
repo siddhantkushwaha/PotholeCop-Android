@@ -24,13 +24,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".LoggedInActivity" />
-
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
+        <activity
+            android:name=".LoggedInActivity"
+            android:label="@string/title_activity_logged_in"></activity>
     </application>
 
 </manifest>
