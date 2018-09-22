@@ -16,6 +16,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -149,7 +150,7 @@ public class AddPothole extends AppCompatActivity {
             severity = button.getText();
         });
         upload = findViewById(R.id.upload);
-        upload.setOnClickListener(view -> CropImage.startPickImageActivity(AddPothole.this));
+        upload.setOnClickListener(v -> CropImage.startPickImageActivity(AddPothole.this));
     }
 
     public boolean validateStepOne() {
@@ -160,10 +161,10 @@ public class AddPothole extends AppCompatActivity {
     }
 
     public boolean validateStepTwo() {
-        if (diameter.getText().toString().length() <= 1) {
+        if (diameter.getText().toString().length() < 1) {
             return false;
         }
-        if (depth.getText().toString().length() <= 1) {
+        if (depth.getText().toString().length() < 1) {
             return false;
         }
         return true;
@@ -252,7 +253,7 @@ public class AddPothole extends AppCompatActivity {
         key = FirebaseDb.getInstance().getReference("potholes").push().getKey();
         FirebaseDb.getInstance().getReference("potholes/" + key).setValue(potholeData);
 
-        Log.i(AddPothole.class.toString(), mCropImageUri.toString());
+//        Log.i(AddPothole.class.toString(), mCropImageUri.toString());
 
 
 //        StorageReference ref = FirebaseStorage.getInstance().getReference("potholeImage/" + key + ".png");
@@ -295,20 +296,17 @@ public class AddPothole extends AppCompatActivity {
         try {
             if (mLocationPermissionGranted) {
                 Task locationResult = mFusedLocationProviderClient.getLastLocation();
-                locationResult.addOnCompleteListener(this, new OnCompleteListener() {
-                    @Override
-                    public void onComplete(@NonNull Task task) {
-                        if (task.isSuccessful()) {
+                locationResult.addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
 
-                            android.location.Location mLastKnownLocation = (android.location.Location) task.getResult();
-                            if (mLastKnownLocation == null)
-                                return;
-                            LatLng latLng = new LatLng(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude());
+                        android.location.Location mLastKnownLocation = (android.location.Location) task.getResult();
+                        if (mLastKnownLocation == null)
+                            return;
+                        LatLng latLng = new LatLng(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude());
 
-                            if(potholeData != null) {
-                                potholeData.setLocation(new Location(latLng.latitude, latLng.longitude));
-                                FirebaseDb.getInstance().getReference("potholes/" + key).setValue(potholeData);
-                            }
+                        if(potholeData != null) {
+                            potholeData.setLocation(new Location(latLng.latitude, latLng.longitude));
+                            FirebaseDb.getInstance().getReference("potholes/" + key).setValue(potholeData);
                         }
                     }
                 });
