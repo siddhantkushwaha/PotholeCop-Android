@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -44,12 +47,12 @@ public class LoginActivity extends AppCompatActivity {
     Button submitButton;
     @BindView(R.id.loginInputs)
     LinearLayout loginInputs;
-    @BindView(R.id.scrollView)
-    ScrollView scrollView;
-    @BindView(R.id.constraintLayout)
-    ConstraintLayout constraintLayout;
     @BindView(R.id.verifyOTPButton)
     Button verifyOTPButton;
+    @BindView(R.id.phoneNumber)
+    TextInputLayout phoneNumber;
+    @BindView(R.id.verifyLinearLayout)
+    LinearLayout verifyLinearLayout;
 
     private String TAG = LoginActivity.class.toString();
 
@@ -87,12 +90,17 @@ public class LoginActivity extends AppCompatActivity {
                     case STATE_ENTER_PHONE:
                         break;
                     case STATE_SENDING_OTP:
+                        verifyLinearLayout.setVisibility(View.GONE);
+                        loginInputs.setVisibility(View.VISIBLE);
                         break;
                     case STATE_ENTER_OTP:
+                        loginInputs.setVisibility(View.GONE);
+                        verifyLinearLayout.setVisibility(View.VISIBLE);
                         break;
                     case STATE_PHONE_VERIFICATION_FAILED:
                         break;
                     case STATE_PHONE_VERIFICATION_SUCCESSFUL:
+
                         break;
                 }
             }
@@ -115,6 +123,10 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onVerificationFailed(FirebaseException e) {
+                Snackbar snackbar = Snackbar
+                        .make(findViewById(android.R.id.content),
+                                "Verification Failed!", Snackbar.LENGTH_LONG);
+                snackbar.show();
                 uiState.setText(STATE_PHONE_VERIFICATION_FAILED);
             }
 
@@ -152,7 +164,10 @@ public class LoginActivity extends AppCompatActivity {
 
         Log.i(TAG, countryCodePicker.getFullNumberWithPlus());
         if (!countryCodePicker.isValidFullNumber()) {
-            //TODO show alert for invalid phone number
+            Snackbar snackbar = Snackbar
+                    .make(findViewById(android.R.id.content),
+                            "Invalid Phone Number!", Snackbar.LENGTH_LONG);
+            snackbar.show();
             return;
         }
         uiState.setText(STATE_SENDING_OTP);
@@ -164,7 +179,10 @@ public class LoginActivity extends AppCompatActivity {
 
         Log.i(TAG, countryCodePicker.getFullNumberWithPlus());
         if (!countryCodePicker.isValidFullNumber()) {
-            //TODO show alert for invalid phone number
+            Snackbar snackbar = Snackbar
+                    .make(findViewById(android.R.id.content),
+                            "Check your Network!", Snackbar.LENGTH_LONG);
+            snackbar.show();
             return;
         }
         uiState.setText(STATE_SENDING_OTP);
@@ -224,7 +242,10 @@ public class LoginActivity extends AppCompatActivity {
                     finish();
 
                 } else {
-
+                    Snackbar snackbar = Snackbar
+                            .make(findViewById(android.R.id.content),
+                                    "Invalid OTP!", Snackbar.LENGTH_LONG);
+                    snackbar.show();
                     Log.e(TAG, "signInWithCredential:failure", task.getException());
                 }
             }

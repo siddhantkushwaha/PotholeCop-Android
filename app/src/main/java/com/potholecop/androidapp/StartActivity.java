@@ -22,6 +22,6 @@ public class StartActivity extends AppCompatActivity {
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(intent);
             finish();
-        }, 3000);
+        }, 2500);
     }
 }

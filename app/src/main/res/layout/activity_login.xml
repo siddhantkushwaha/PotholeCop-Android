@@ -1,120 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
     tools:context=".LoginActivity">
 
-    <ScrollView
-        android:id="@+id/scrollView"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="140sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="86dp"
+        custom:srcCompat="@drawable/logo" />
+
+    <LinearLayout
+        android:id="@+id/loginInputs"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="false"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5sp"
+        android:layout_marginRight="5sp"
+        android:layout_marginTop="50sp"
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <LinearLayout
-            android:layout_width="300dp"
+            android:id="@+id/ccpLinearLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical">
+            android:layout_marginBottom="4dp"
+            android:background="@color/colorGrey"
+            android:gravity="center"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp">
 
-
-            <LinearLayout
-                android:id="@+id/loginInputs"
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/countryCodePicker"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:id="@+id/ccpLinearLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:background="@color/colorGrey"
-                    android:gravity="center"
-                    android:paddingBottom="4dp"
-                    android:paddingTop="4dp">
-
-                    <com.hbb20.CountryCodePicker
-                        android:id="@+id/countryCodePicker"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        app:ccpDialog_keyboardAutoPopup="false"
-                        app:ccpDialog_showCloseIcon="true"
-                        app:ccp_rememberLastSelection="true"
-                        app:ccp_showFullName="true"
-                        app:ccp_showNameCode="false"
-                        app:ccp_textGravity="LEFT" />
-                </LinearLayout>
-
-                <EditText
-                    android:id="@+id/phoneEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:background="@color/colorGrey"
-                    android:ems="10"
-                    android:hint="Phone"
-                    android:inputType="phone"
-                    android:padding="12dp" />
-
-                <EditText
-                    android:id="@+id/otpEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:background="@color/colorGrey"
-                    android:ems="10"
-                    android:hint="OTP"
-                    android:inputType="number"
-                    android:padding="12dp"
-                    android:paddingLeft="10dp"
-                    android:visibility="gone" />
-
-                <Button
-                    android:id="@+id/verifyOTPButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:background="@color/colorAccent"
-                    android:stateListAnimator="@null"
-                    android:text="Verify OTP"
-                    android:textAllCaps="false"
-                    android:textColor="@android:color/white"
-                    android:textSize="18sp"
-                    android:visibility="gone" />
-
-                <Button
-                    android:id="@+id/resendOTPButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:background="@color/colorAccent"
-                    android:stateListAnimator="@null"
-                    android:text="Resend OTP"
-                    android:textAllCaps="false"
-                    android:textColor="@android:color/white"
-                    android:textSize="18sp"
-                    android:visibility="gone" />
-
-
-                <Button
-                    android:id="@+id/submitButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorAccent"
-                    android:stateListAnimator="@null"
-                    android:text="Send OTP"
-                    android:textAllCaps="false"
-                    android:textColor="@android:color/white"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
+                android:layout_height="match_parent"
+                android:gravity="center"
+                app:ccpDialog_keyboardAutoPopup="false"
+                app:ccpDialog_showCloseIcon="true"
+                app:ccp_rememberLastSelection="true"
+                app:ccp_showFullName="true"
+                app:ccp_showNameCode="false"
+                app:ccp_textGravity="LEFT" />
         </LinearLayout>
 
-    </ScrollView>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/phoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp">
 
-</android.support.constraint.ConstraintLayout>
+            <EditText
+                android:id="@+id/phoneEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone Number"
+                android:inputType="phone"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <com.dd.processbutton.FlatButton
+            android:id="@+id/submitButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary"
+            android:padding="10dp"
+            android:text="Send OTP"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            custom:pb_colorNormal="@android:color/holo_blue_light"
+            custom:pb_colorPressed="@android:color/holo_blue_dark" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/verifyLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="false"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="false"
+        android:layout_marginLeft="5sp"
+        android:layout_marginRight="5sp"
+        android:layout_marginTop="40sp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/otp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5sp">
+
+            <EditText
+                android:id="@+id/otpEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10sp"
+                android:layout_marginStart="10sp"
+                android:hint="Enter OTP"
+                android:inputType="phone"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <com.dd.processbutton.FlatButton
+                android:id="@+id/verifyOTPButton"
+                android:layout_width="170sp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorPrimary"
+                android:padding="10dp"
+                android:text="Verify OTP"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                custom:pb_colorNormal="@android:color/holo_blue_light"
+                custom:pb_colorPressed="@android:color/holo_blue_dark" />
+
+            <com.dd.processbutton.FlatButton
+                android:id="@+id/resendOTPButton"
+                android:layout_width="160sp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorPrimary"
+                android:padding="10dp"
+                android:text="Resend OTP"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                custom:pb_colorNormal="@android:color/holo_blue_light"
+                custom:pb_colorPressed="@android:color/holo_blue_dark" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
