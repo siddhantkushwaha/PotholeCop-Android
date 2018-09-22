@@ -3,6 +3,8 @@ package com.potholecop.androidapp.pojo;
 public class PotholeData {
 
     private Location location;
+    private String photo;
+    private String userId;
     private String timestamp;
     private Boolean isFixed;
     private String depth;
@@ -55,5 +57,21 @@ public class PotholeData {
 
     public void setSeverity(String severity) {
         this.severity = severity;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public String getPhoto() {
+        return photo;
     }
 }

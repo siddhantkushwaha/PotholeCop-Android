@@ -1,16 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".AddPothole">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
+
+        <moe.feng.common.stepperview.VerticalStepperItemView
+            android:id="@+id/stepper_0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:step_index="1"
+            app:step_state="selected"
+            app:step_summary_done="Done"
+            app:step_title="Street Details">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/street_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Street Name(Optional)"
+                        android:inputType="text" />
+                </android.support.design.widget.TextInputLayout>
+                <Button
+                    android:id="@+id/upload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/material_blue_500"
+                    android:text="Upload Image"
+                    android:textColor="@android:color/white" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_next_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/material_blue_500"
+                        android:text="Next"
+                        android:textColor="@android:color/white" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@android:string/cancel" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </moe.feng.common.stepperview.VerticalStepperItemView>
 
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        <moe.feng.common.stepperview.VerticalStepperItemView
+            android:id="@+id/stepper_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:step_index="2"
+            app:step_is_last="true"
+            app:step_summary_done="Done"
+            app:step_title="Pothole Details">
 
-</android.support.design.widget.CoordinatorLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/diameter"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Approx. Diameter"
+                            android:inputType="text" />
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/depth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Approx. Depth"
+                            android:inputType="text" />
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Severity:"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <co.ceryle.radiorealbutton.RadioRealButtonGroup
+                        android:id="@+id/group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:elevation="1dp"
+                        app:rrbg_animateDrawables_enter="overshoot"
+                        app:rrbg_animateDrawables_enterDuration="500"
+                        app:rrbg_animateDrawables_scale="1.2"
+                        app:rrbg_animateTexts_enter="overshoot"
+                        app:rrbg_animateTexts_enterDuration="500"
+                        app:rrbg_backgroundColor="@android:color/white"
+                        app:rrbg_bottomLineColor="@color/material_blue_500"
+                        app:rrbg_bottomLineRadius="2dp"
+                        app:rrbg_bottomLineSize="2dp"
+                        app:rrbg_buttonsPaddingBottom="8dp"
+                        app:rrbg_buttonsPaddingTop="6dp"
+                        app:rrbg_checkedPosition="0"
+                        app:rrbg_radius="2dp"
+                        app:rrbg_selectorAboveOfBottomLine="true"
+                        app:rrbg_selectorAnimationType="alpha"
+                        app:rrbg_selectorColor="#FF4500"
+                        app:rrbg_selectorDividerColor="@color/material_blue_500"
+                        app:rrbg_selectorDividerSize="2dp"
+                        app:rrbg_selectorRadius="0dp"
+                        app:rrbg_selectorSize="4dp">
+
+                        <co.ceryle.radiorealbutton.RadioRealButton
+                            android:id="@+id/low"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:rrb_drawableHeight="36dp"
+                            app:rrb_drawableWidth="36dp"
+                            app:rrb_text="Low" />
+
+                        <co.ceryle.radiorealbutton.RadioRealButton
+                            android:id="@+id/medium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:rrb_drawableHeight="36dp"
+                            app:rrb_drawableWidth="36dp"
+                            app:rrb_text="Medium" />
+
+                        <co.ceryle.radiorealbutton.RadioRealButton
+                            android:id="@+id/high"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:rrb_drawableHeight="36dp"
+                            app:rrb_drawableWidth="36dp"
+                            app:rrb_text="High" />
+                    </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_next_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/material_blue_500"
+                        android:text="Submit"
+                        android:textColor="@android:color/white" />
+
+                    <Button
+                        android:id="@+id/button_prev_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="Previous" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </moe.feng.common.stepperview.VerticalStepperItemView>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

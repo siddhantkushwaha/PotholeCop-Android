@@ -51,7 +51,9 @@ dependencies {
 
     implementation 'com.hbb20:ccp:2.2.0'
     implementation 'com.jakewharton:butterknife:8.8.1'
+    implementation 'moe.feng:MaterialStepperView:+'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.github.ceryle:RadioRealButton:v2.1.1'
 
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.3.+'
 

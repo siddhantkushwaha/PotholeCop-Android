@@ -45,8 +45,6 @@ public class LocalFragment extends Fragment {
 
     private FragmentActivity context;
     private GoogleMap mMap;
-    private Boolean mLocationPermissionGranted;
-    private FusedLocationProviderClient mFusedLocationProviderClient;
     private Marker marker;
 
 
@@ -72,13 +70,7 @@ public class LocalFragment extends Fragment {
             }
         });
 
-        mLocationPermissionGranted = false;
-        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context);
 
-        if (mLocationPermissionGranted)
-            getDeviceLocation();
-        else
-            getLocationPermission();
 
         return view;
     }
@@ -87,63 +79,5 @@ public class LocalFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
-
-
-        mLocationPermissionGranted = false;
-        switch (requestCode) {
-            case 0: {
-
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    mLocationPermissionGranted = true;
-                }
-            }
-        }
-
-        if (mLocationPermissionGranted)
-            getDeviceLocation();
-    }
-
-    private void getDeviceLocation() {
-
-        try {
-            if (mLocationPermissionGranted) {
-                Task locationResult = mFusedLocationProviderClient.getLastLocation();
-                locationResult.addOnCompleteListener(context, new OnCompleteListener() {
-                    @Override
-                    public void onComplete(@NonNull Task task) {
-                        if (task.isSuccessful()) {
-
-                            android.location.Location mLastKnownLocation = (android.location.Location) task.getResult();
-                            if (mLastKnownLocation == null)
-                                return;
-                            LatLng latLng = new LatLng(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude());
-                            if (mMap != null)
-                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
-                        }
-                    }
-                });
-            }
-        } catch (SecurityException e) {
-            Log.e("Exception: %s", e.getMessage());
-        }
-    }
-
-    private void getLocationPermission() {
-
-        if (ContextCompat.checkSelfPermission(context.getApplicationContext(),
-                android.Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-            mLocationPermissionGranted = true;
-            getDeviceLocation();
-        } else {
-            ActivityCompat.requestPermissions(context,
-                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
-                    0);
-        }
     }
 }

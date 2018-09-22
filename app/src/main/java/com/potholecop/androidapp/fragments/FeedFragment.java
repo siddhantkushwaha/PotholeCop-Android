@@ -54,7 +54,6 @@ public class FeedFragment extends Fragment {
         feedGridAdapter = new FeedGridAdapter(context, potholeDataArrayList);
         grid.setAdapter(feedGridAdapter);
 
-
         return view;
     }
 
