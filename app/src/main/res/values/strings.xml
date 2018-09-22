@@ -8,4 +8,6 @@
     <string name="title_home">Feed</string>
     <string name="title_dashboard">Local</string>
     <string name="title_notifications">Profile</string>
+
+    <string name="google_maps_key">AIzaSyB00w8TBmUH7EbULVTNkBWVpWRzlHePQlo</string>
 </resources>
