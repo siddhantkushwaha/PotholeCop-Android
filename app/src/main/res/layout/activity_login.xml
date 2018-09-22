@@ -14,10 +14,10 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
-        android:layout_height="140sp"
+        android:layout_height="200sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="86dp"
+        android:layout_marginTop="40sp"
         custom:srcCompat="@drawable/logo" />
 
     <LinearLayout
@@ -31,8 +31,7 @@
         android:layout_marginLeft="5sp"
         android:layout_marginRight="5sp"
         android:layout_marginTop="50sp"
-        android:orientation="vertical"
-        android:visibility="visible">
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/ccpLinearLayout"
@@ -73,7 +72,7 @@
         </android.support.design.widget.TextInputLayout>
 
 
-        <com.dd.processbutton.FlatButton
+        <Button
             android:id="@+id/submitButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -82,9 +81,7 @@
             android:padding="10dp"
             android:text="Send OTP"
             android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            custom:pb_colorNormal="@android:color/holo_blue_light"
-            custom:pb_colorPressed="@android:color/holo_blue_dark" />
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 
@@ -96,8 +93,6 @@
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="false"
-        android:layout_marginLeft="5sp"
-        android:layout_marginRight="5sp"
         android:layout_marginTop="40sp"
         android:orientation="vertical"
         android:visibility="gone">
@@ -126,7 +121,7 @@
             android:gravity="center_horizontal"
             android:orientation="horizontal">
 
-            <com.dd.processbutton.FlatButton
+            <Button
                 android:id="@+id/verifyOTPButton"
                 android:layout_width="170sp"
                 android:layout_height="wrap_content"
@@ -135,11 +130,9 @@
                 android:padding="10dp"
                 android:text="Verify OTP"
                 android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                custom:pb_colorNormal="@android:color/holo_blue_light"
-                custom:pb_colorPressed="@android:color/holo_blue_dark" />
+                android:textColor="@android:color/white" />
 
-            <com.dd.processbutton.FlatButton
+            <Button
                 android:id="@+id/resendOTPButton"
                 android:layout_width="160sp"
                 android:layout_height="wrap_content"
@@ -149,11 +142,40 @@
                 android:padding="10dp"
                 android:text="Resend OTP"
                 android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                custom:pb_colorNormal="@android:color/holo_blue_light"
-                custom:pb_colorPressed="@android:color/holo_blue_dark" />
+                android:textColor="@android:color/white" />
 
         </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_alignBottom="@+id/toggleButton2"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="40dp"
+                android:indeterminate="true"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/toggleButton2"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="false"
+                android:background="@color/colorGrey"
+                android:text="Entered a Wrong Number?"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
     </LinearLayout>
+
 
 </RelativeLayout>
