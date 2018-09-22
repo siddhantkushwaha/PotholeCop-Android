@@ -1,5 +1,6 @@
 package com.potholecop.androidapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -63,5 +64,17 @@ public class LoggedInActivity extends AppCompatActivity {
         transaction.replace(R.id.fragment_container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.action_report_pothole:
+                Intent intent = new Intent(LoggedInActivity.this, AddPothole.class);
+                startActivity(intent);
+                break;
+        }
+        return true;
     }
 }

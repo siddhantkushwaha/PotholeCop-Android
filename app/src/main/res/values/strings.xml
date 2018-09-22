@@ -10,4 +10,5 @@
     <string name="title_notifications">Profile</string>
 
     <string name="google_maps_key">AIzaSyB00w8TBmUH7EbULVTNkBWVpWRzlHePQlo</string>
+    <string name="title_activity_add_pothole">AddPothole</string>
 </resources>
