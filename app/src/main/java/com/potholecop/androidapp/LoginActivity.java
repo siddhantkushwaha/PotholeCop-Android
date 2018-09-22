@@ -3,7 +3,6 @@ package com.potholecop.androidapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -13,8 +12,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -55,6 +56,12 @@ public class LoginActivity extends AppCompatActivity {
     LinearLayout verifyLinearLayout;
     @BindView(R.id.toggleButton2)
     Button wrongNumber;
+    @BindView(R.id.imageView)
+    ImageView imageView;
+    @BindView(R.id.otp)
+    TextInputLayout otp;
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
 
     private String TAG = LoginActivity.class.toString();
 
@@ -94,19 +101,26 @@ public class LoginActivity extends AppCompatActivity {
                 Log.i(TAG + " check", s.toString());
                 switch (s.toString()) {
                     case STATE_ENTER_PHONE:
-                        break;
-                    case STATE_SENDING_OTP:
+                        progressBar.setVisibility(View.GONE);
+                        Snackbar.make(findViewById(android.R.id.content), "OTP Sent.", Snackbar.LENGTH_LONG).show();
                         verifyLinearLayout.setVisibility(View.GONE);
                         loginInputs.setVisibility(View.VISIBLE);
                         break;
+                    case STATE_SENDING_OTP:
+                        progressBar.setVisibility(View.VISIBLE);
+                        Snackbar.make(findViewById(android.R.id.content), "Sending OTP.", Snackbar.LENGTH_LONG).show();
+                        break;
                     case STATE_ENTER_OTP:
+                        progressBar.setVisibility(View.GONE);
                         loginInputs.setVisibility(View.GONE);
                         verifyLinearLayout.setVisibility(View.VISIBLE);
                         break;
                     case STATE_PHONE_VERIFICATION_FAILED:
+                        progressBar.setVisibility(View.GONE);
+                        Snackbar.make(findViewById(android.R.id.content), "Verification Failed.", Snackbar.LENGTH_LONG).show();
                         break;
                     case STATE_PHONE_VERIFICATION_SUCCESSFUL:
-
+                        progressBar.setVisibility(View.GONE);
                         break;
                 }
             }
@@ -129,10 +143,6 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onVerificationFailed(FirebaseException e) {
-                Snackbar snackbar = Snackbar
-                        .make(findViewById(android.R.id.content),
-                                "Verification Failed!", Snackbar.LENGTH_LONG);
-                snackbar.show();
                 uiState.setText(STATE_PHONE_VERIFICATION_FAILED);
             }
 
@@ -152,7 +162,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             Intent intent = new Intent(LoginActivity.this, LoggedInActivity.class);
             startActivity(intent);
             finish();
@@ -170,10 +180,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Log.i(TAG, countryCodePicker.getFullNumberWithPlus());
         if (!countryCodePicker.isValidFullNumber()) {
-            Snackbar snackbar = Snackbar
-                    .make(findViewById(android.R.id.content),
-                            "Invalid Phone Number!", Snackbar.LENGTH_LONG);
-            snackbar.show();
+            Snackbar.make(findViewById(android.R.id.content), "Invalid Phone Number.", Snackbar.LENGTH_LONG).show();
             return;
         }
         uiState.setText(STATE_SENDING_OTP);
@@ -185,10 +192,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Log.i(TAG, countryCodePicker.getFullNumberWithPlus());
         if (!countryCodePicker.isValidFullNumber()) {
-            Snackbar snackbar = Snackbar
-                    .make(findViewById(android.R.id.content),
-                            "Check your Network!", Snackbar.LENGTH_LONG);
-            snackbar.show();
+            Snackbar.make(findViewById(android.R.id.content), "Invalid Phone Number..", Snackbar.LENGTH_LONG).show();
             return;
         }
         uiState.setText(STATE_SENDING_OTP);
@@ -235,23 +239,20 @@ public class LoginActivity extends AppCompatActivity {
 
     private void signIn(PhoneAuthCredential phoneAuthCredential) {
 
+        progressBar.setVisibility(View.VISIBLE);
         FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
+                progressBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
-
-                    Log.i(TAG, "signInWithCredential:success");
 
                     Intent intent = new Intent(LoginActivity.this, LoggedInActivity.class);
                     startActivity(intent);
                     finish();
 
                 } else {
-                    Snackbar snackbar = Snackbar
-                            .make(findViewById(android.R.id.content),
-                                    "Invalid OTP!", Snackbar.LENGTH_LONG);
-                    snackbar.show();
+                    Snackbar.make(findViewById(android.R.id.content), "Login Failed.", Snackbar.LENGTH_LONG).show();
                     Log.e(TAG, "signInWithCredential:failure", task.getException());
                 }
             }
