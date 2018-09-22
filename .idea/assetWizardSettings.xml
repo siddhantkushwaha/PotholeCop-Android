@@ -23,7 +23,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="scalingPercent" value="41" />
+                                                <entry key="scalingPercent" value="54" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -35,7 +35,7 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="ffffff" />
-                                      <entry key="foregroundImage" value="$USER_HOME$/Downloads/policeman.svg" />
+                                      <entry key="foregroundImage" value="$USER_HOME$/Desktop/App_logo.png" />
                                       <entry key="legacyIconShape" value="CIRCLE" />
                                       <entry key="webIconShape" value="CIRCLE" />
                                     </map>
