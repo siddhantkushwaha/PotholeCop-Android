@@ -26,5 +26,5 @@
         android:text="Build for India"
         android:textColor="@android:color/white"
         android:textSize="30sp"
-        app:fontFamily="@font/lobster" />
+        app:fontFamily="serif" />
 </RelativeLayout>

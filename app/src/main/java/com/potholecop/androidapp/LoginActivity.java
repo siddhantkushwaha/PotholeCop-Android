@@ -53,6 +53,8 @@ public class LoginActivity extends AppCompatActivity {
     TextInputLayout phoneNumber;
     @BindView(R.id.verifyLinearLayout)
     LinearLayout verifyLinearLayout;
+    @BindView(R.id.toggleButton2)
+    Button wrongNumber;
 
     private String TAG = LoginActivity.class.toString();
 
@@ -77,6 +79,10 @@ public class LoginActivity extends AppCompatActivity {
 
         uiState = new EditText(LoginActivity.this);
         uiState.setText(STATE_ENTER_PHONE);
+        wrongNumber.setOnClickListener(view -> {
+            loginInputs.setVisibility(View.VISIBLE);
+            verifyLinearLayout.setVisibility(View.GONE);
+        });
         uiState.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
