@@ -4,8 +4,8 @@
     <string name="title_activity_start">StartActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="title_activity_logged_in">LoggedInActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_logged_in">Pothole Cop</string>
+    <string name="title_home">Feed</string>
+    <string name="title_dashboard">Local</string>
+    <string name="title_notifications">Profile</string>
 </resources>

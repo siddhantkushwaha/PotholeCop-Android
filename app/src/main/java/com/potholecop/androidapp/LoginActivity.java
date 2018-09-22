@@ -130,6 +130,17 @@ public class LoginActivity extends AppCompatActivity {
         };
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+            Intent intent = new Intent(LoginActivity.this, LoggedInActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
+
     @OnClick(R.id.verifyOTPButton)
     public void onVerifyOTPButtonClicked() {
 
