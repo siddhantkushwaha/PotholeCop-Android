@@ -2,4 +2,9 @@
     <string name="app_name">Pothole Cop</string>
 
     <string name="google_maps_key">AIzaSyB00w8TBmUH7EbULVTNkBWVpWRzlHePQlo</string>
+    <string name="title_activity_logged_in">Pothole Cop</string>
+    <string name="tab_text_1">Feed</string>
+    <string name="tab_text_2">Local</string>
+    <string name="tab_text_3">Profile</string>
+    <string name="action_settings">Settings</string>
 </resources>

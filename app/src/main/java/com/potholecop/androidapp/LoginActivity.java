@@ -163,9 +163,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
 
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            Intent intent = new Intent(LoginActivity.this, LoggedInActivity.class);
-            startActivity(intent);
-            finish();
+//            Intent intent = new Intent(LoginActivity.this, LoggedInActivity.class);
+//            startActivity(intent);
+//            finish();
         }
     }
 
@@ -247,9 +247,9 @@ public class LoginActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
 
-                    Intent intent = new Intent(LoginActivity.this, LoggedInActivity.class);
-                    startActivity(intent);
-                    finish();
+//                    Intent intent = new Intent(LoginActivity.this, LoggedInActivity.class);
+//                    startActivity(intent);
+//                    finish();
 
                 } else {
                     Snackbar.make(findViewById(android.R.id.content), "Login Failed.", Snackbar.LENGTH_LONG).show();
