@@ -42,7 +42,6 @@
                     android:background="@drawable/circle_red" />
 
                 <CheckBox
-                    android:id="@+id/checkBox2"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:layout_alignEnd="@+id/serverity"

@@ -2,26 +2,10 @@
 <resources>
 
     <color name="colorGrey">#ececec</color>
-    <color name="colorGreyDark">#7e7e7e</color>
-    <color name="colorIndigo">#0d43ce</color>
-    <color name="colorIndigoDark">#0733a4</color>
-    <color name="colorWhite">#ffffff</color>
-    <color name="colorBlack">#000000</color>
-    <color name="colorRed">#ff0000</color>
-
-    <color name="colorMessageErrorHolder">@color/colorRed</color>
-    <color name="colorMessageSentHolder">@color/colorIndigo</color>
-    <color name="colorMessageReceivedHolder">#ffffff</color>
 
 
-    <color name="black_overlay">#66000000</color>
     <color name="colorPrimary">#5064D1</color>
     <color name="colorPrimaryDark">#5550D1</color>
-    <color name="primary_light">#50A4D1</color>
     <color name="colorAccent">#448AFF</color>
-    <color name="primary_text">#212121</color>
-    <color name="secondary_text">#757575</color>
-    <color name="icons">#FFFFFF</color>
-    <color name="divider">#BDBDBD</color>
 
 </resources>
