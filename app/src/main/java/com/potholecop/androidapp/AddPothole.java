@@ -7,7 +7,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Parcelable;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -16,14 +16,13 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.yalantis.ucrop.UCrop;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 
 import butterknife.BindView;
@@ -36,8 +35,11 @@ public class AddPothole extends AppCompatActivity {
     Button addPhoto;
     @BindView(R.id.submitData)
     Button submitData;
+    @BindView(R.id.potholeImage)
+    ImageView potholeImage;
 
     private Uri photoUri;
+    private Uri croppedImageUri;
 
     private static final int REQUEST_CODE_CAMERA = 0;
     private static final int REQUEST_CODE_STORAGE = 1;
@@ -128,7 +130,7 @@ public class AddPothole extends AppCompatActivity {
     private void openImageIntent() {
 
 
-        Intent captureIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (captureIntent.resolveActivity(getPackageManager()) != null) {
 
             File file = null;
@@ -171,5 +173,8 @@ public class AddPothole extends AppCompatActivity {
     private void handleCropResult(Uri uri) {
 
         Log.i(AddPothole.class.toString(), String.valueOf(uri));
+        croppedImageUri = uri;
+
+        potholeImage.setImageURI(croppedImageUri);
     }
 }
